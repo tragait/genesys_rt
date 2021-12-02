@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:jpadb #jdbc:h2:file:/tmp/jpadb
+    driverClassName: org.h2.Driver
+    username: rt
+    password: rt
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+      show_sql: true
+      use_sql_comments: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+kafka:
+  bootstrap:
+    server: localhost:9092
+  topic:
+    name: sensorData
+  group:
+    id: 1

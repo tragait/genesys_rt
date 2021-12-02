@@ -1,0 +1,118 @@
+components:
+  schemas:
+    ErrorMessage:
+      type: object
+      title: Error
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        details:
+          type: string
+
+    metadata:
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+
+    query:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: number
+        parameters:
+          type: array
+          items:
+            type: string
+            enum: [ temperature, humidity ]
+        dateRange:
+          $ref: '#/components/schemas/queryDateRange'
+        dates:
+          type: array
+          items:
+            type: string
+            format: date
+
+    data:
+      type: object
+      properties:
+        sensorId:
+          type: number
+        temperature:
+          type: number
+        humidity:
+          type: number
+        timestamp:
+          type: string
+
+    queryDateRange:
+      type: object
+      properties:
+        from:
+          type: string
+          format: date
+        to:
+          type: string
+          format: date
+
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+    Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+    Ok:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+    Created:
+      description: Created
+      content:
+        text/plain:
+          schema:
+            type: string
+    NoContent:
+      description: No Content
+      content: {}
+
+  parameters:
+    sensorIdInPath:
+      name: sensorId
+      in: path
+      description: sensor Id in path.
+      required: true
+      schema:
+        type: number
+

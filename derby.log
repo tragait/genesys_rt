@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Jun 21 11:46:52 IST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017a-2e2e-1c95-0000264656e0 
+on database directory memory:/home/rahul/accela_rt/0351df0d-8cf6-4aa6-82a8-417b5764a082 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@3d4eac69 
+Loaded from file:/home/rahul/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Ubuntu
+java.runtime.version=11.0.11+9-Ubuntu-0ubuntu2.20.04
+user.dir=/home/rahul/accela_rt
+os.name=Linux
+os.arch=amd64
+os.version=5.4.0-74-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
