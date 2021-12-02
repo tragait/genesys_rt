@@ -1,0 +1,87 @@
+openapi: 3.0.1
+info:
+  title: Genesys test api
+  description: Genesys test api
+  version: "1.0.0"
+servers:
+  - url: /data
+tags:
+  - name: data-internal
+    description: internal rest apis
+  - name: data
+    description: external rest apis
+
+paths:
+  /v1/sensors/query:
+    get:
+      tags:
+        - data
+      summary: Get all given param in query
+      operationId: getSensorData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'components.yml#/components/schemas/query'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: 'components.yml#/components/responses/BadRequest'
+        '401':
+          $ref: 'components.yml#/components/responses/Unauthorized'
+        '403':
+          $ref: 'components.yml#/components/responses/Forbidden'
+
+  /v1/sensors/sensor/{sensorId}/register:
+    post:
+      tags:
+       - data-internal
+      summary: Register given sensor with metadata
+      description: Register given sensor with metadata
+      operationId: registerSensor
+      parameters:
+        - $ref: 'components.yml#/components/parameters/sensorIdInPath'
+      requestBody:
+        description: Request body for sensor metadata
+        content:
+          application/json:
+            schema:
+              $ref: 'components.yml#/components/schemas/metadata'
+      responses:
+        '201':
+          $ref: 'components.yml#/components/responses/Created'
+        '400':
+          $ref: 'components.yml#/components/responses/BadRequest'
+        '401':
+          $ref: 'components.yml#/components/responses/Unauthorized'
+        '403':
+          $ref: 'components.yml#/components/responses/Forbidden'
+  /v1/sensors/data:
+    post:
+      tags:
+        - data-internal
+      summary: save given sensor data
+      description: save given sensor data
+      operationId: saveSensorData
+      requestBody:
+        description: Request body for sensor data
+        content:
+          application/json:
+            schema:
+              $ref: 'components.yml#/components/schemas/data'
+      responses:
+        '201':
+          $ref: 'components.yml#/components/responses/Created'
+        '400':
+          $ref: 'components.yml#/components/responses/BadRequest'
+        '401':
+          $ref: 'components.yml#/components/responses/Unauthorized'
+        '403':
+          $ref: 'components.yml#/components/responses/Forbidden'
+
+
